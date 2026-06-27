@@ -59,11 +59,11 @@
 .skeleton {
   background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-shine) 50%, var(--skeleton-base) 75%);
   background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
+  animation: shimmerReverse 1.5s infinite;
   border-radius: var(--radius-sm);
 }
 
-@keyframes shimmer {
+@keyframes shimmerReverse {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }

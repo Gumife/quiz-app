@@ -20,7 +20,7 @@
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-modal);
-  animation: slideUp 0.25s ease-out;
+  animation: slideUpScale 0.25s ease-out;
 }
 
 .header {
@@ -172,12 +172,7 @@
   color: var(--text-caption);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
+@keyframes slideUpScale {
   from {
     opacity: 0;
     transform: translateY(20px) scale(0.95);

@@ -147,7 +147,7 @@
   margin-top: var(--space-md);
   padding-top: var(--space-md);
   border-top: 1px solid var(--border-color);
-  animation: fadeIn var(--transition-normal);
+  animation: fadeInSlide var(--transition-normal);
 }
 
 .options {
@@ -216,7 +216,7 @@
   background: var(--bg-hover);
 }
 
-@keyframes fadeIn {
+@keyframes fadeInSlide {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
