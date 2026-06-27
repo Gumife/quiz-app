@@ -1,0 +1,222 @@
+.container {
+  min-height: 100vh;
+  background: var(--bg-page);
+  padding: var(--space-lg);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.backBtn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-title);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+}
+
+.backBtn:hover {
+  background: var(--bg-hover);
+}
+
+.title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--text-title);
+  flex: 1;
+}
+
+.count {
+  font-size: var(--font-size-sm);
+  color: var(--text-caption);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.filterBtn {
+  padding: 8px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  color: var(--text-body);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filterBtn:hover {
+  background: var(--bg-hover);
+}
+
+.filterBtn.active {
+  background: var(--primary);
+  color: var(--text-on-primary);
+  border-color: var(--primary);
+}
+
+.questionList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-bottom: 80px;
+}
+
+.questionCard {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.questionCard:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.questionCard.expanded {
+  box-shadow: var(--shadow-hover);
+}
+
+.questionHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.questionNumber {
+  font-size: var(--font-size-sm);
+  color: var(--text-caption);
+  font-weight: 600;
+}
+
+.typeTag {
+  font-size: var(--font-size-xs);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+}
+
+.typeTag.single {
+  background: rgba(22, 93, 255, 0.1);
+  color: var(--primary);
+}
+
+.typeTag.multiple {
+  background: rgba(255, 107, 107, 0.1);
+  color: var(--error);
+}
+
+.typeTag.judge {
+  background: rgba(0, 180, 42, 0.1);
+  color: var(--success);
+}
+
+.typeTag.essay {
+  background: rgba(255, 159, 0, 0.1);
+  color: var(--warning);
+}
+
+.expandIcon {
+  margin-left: auto;
+  font-size: var(--font-size-lg);
+  color: var(--text-caption);
+}
+
+.questionText {
+  font-size: var(--font-size-base);
+  color: var(--text-title);
+  line-height: 1.6;
+}
+
+.questionDetails {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-color);
+  animation: fadeIn var(--transition-normal);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  background: var(--bg-page);
+  border-radius: var(--radius-sm);
+}
+
+.optionKey {
+  font-weight: 600;
+  color: var(--primary);
+  min-width: 24px;
+}
+
+.optionText {
+  color: var(--text-body);
+  flex: 1;
+}
+
+.answer {
+  padding: var(--space-sm);
+  background: rgba(22, 93, 255, 0.05);
+  border-radius: var(--radius-sm);
+  color: var(--text-title);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.explanation {
+  padding: var(--space-sm);
+  background: rgba(255, 159, 0, 0.05);
+  border-radius: var(--radius-sm);
+  color: var(--text-body);
+  font-size: var(--font-size-sm);
+}
+
+.backButton {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: calc(var(--content-max-width) - 32px);
+  padding: 16px;
+  background: var(--bg-card);
+  color: var(--text-title);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+}
+
+.backButton:hover {
+  background: var(--bg-hover);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

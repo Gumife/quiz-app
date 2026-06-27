@@ -88,6 +88,17 @@
   --card-padding: 20px;
   --card-padding-lg: 24px;
   --page-padding-xl: 32px;
+
+  --text-on-primary: #ffffff;
+  --overlay-light: rgba(0, 0, 0, 0.4);
+  --overlay-dark: rgba(0, 0, 0, 0.85);
+  --skeleton-base: #e5e6eb;
+  --skeleton-shine: #f2f3f5;
+  --primary-shadow: rgba(22, 93, 255, 0.3);
+  --fixed-bottom-clearance: 100px;
+  --z-overlay: 1000;
+  --z-modal: 1100;
+  --z-toast: 1200;
 }
 
 html, body {

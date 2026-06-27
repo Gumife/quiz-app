@@ -1,0 +1,372 @@
+.container {
+  min-height: 100vh;
+  background: var(--bg-page);
+  padding: var(--page-padding);
+  padding-bottom: 100px;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.header {
+  padding: var(--space-xl) 0;
+  animation: fadeInDown var(--transition-normal) both;
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--text-title);
+}
+
+.overviewCard {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: var(--card-padding);
+  margin-bottom: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  animation: fadeInUp var(--transition-normal) 0.1s both;
+}
+
+.cardTitle {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--text-title);
+  margin-bottom: var(--space-lg);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.statCard {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  backdrop-filter: blur(32px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    inset 0 1px 0 0 var(--glass-highlight),
+    inset 0 -1px 0 0 var(--glass-shadow-line),
+    0 8px 32px -8px var(--glass-drop);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.statCard:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.statIcon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.statValue {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--primary);
+  display: block;
+}
+
+.statLabel {
+  font-size: var(--font-size-sm);
+  color: var(--text-caption);
+  margin-top: var(--space-xs);
+}
+
+.chartCard {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: var(--card-padding);
+  margin-bottom: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  animation: fadeInUp var(--transition-normal) 0.2s both;
+}
+
+.chartContainer {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-xl) 0;
+}
+
+.circleProgress {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: conic-gradient(var(--primary) var(--progress, 0%), var(--skeleton-base) 0%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: scaleIn var(--transition-normal) 0.3s both;
+}
+
+.circleProgress::before {
+  content: '';
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background: var(--bg-card);
+}
+
+.circleInner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.progressValue {
+  font-size: var(--font-size-4xl);
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.progressUnit {
+  font-size: var(--font-size-lg);
+  color: var(--text-caption);
+  font-weight: 500;
+}
+
+.barChartCard {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: var(--card-padding);
+  margin-bottom: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  animation: fadeInUp var(--transition-normal) 0.3s both;
+}
+
+.barChart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 160px;
+  padding: var(--space-lg) 0;
+}
+
+.barItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  flex: 1;
+  animation: slideUp var(--transition-normal) both;
+}
+
+.barWrapper {
+  width: 32px;
+  height: 120px;
+  background: var(--bg-page);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.bar {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  transition: height var(--transition-slow);
+  min-height: 4px;
+}
+
+.barLabel {
+  font-size: var(--font-size-xs);
+  color: var(--text-caption);
+  font-weight: 500;
+}
+
+.wrongCard, .bookmarkCard, .historyCard {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: var(--card-padding);
+  margin-bottom: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  animation: fadeInUp var(--transition-normal) 0.4s both;
+}
+
+.wrongHeader, .bookmarkHeader, .historyHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+}
+
+.historyActions {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.exportButton, .clearButton {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.exportButton {
+  background: var(--primary-bg);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.exportButton:hover {
+  background: var(--primary);
+  color: var(--text-on-primary);
+}
+
+.clearButton {
+  background: transparent;
+  color: var(--error);
+  border: 1px solid var(--error);
+}
+
+.clearButton:hover {
+  background: var(--error);
+  color: var(--text-on-primary);
+}
+
+.wrongList, .bookmarkList, .historyList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.wrongItem, .bookmarkItem, .historyItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg);
+  background: var(--bg-page);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.wrongItem:hover, .bookmarkItem:hover, .historyItem:hover {
+  background: var(--bg-hover);
+  transform: translateX(6px);
+  box-shadow: var(--shadow-card);
+}
+
+.wrongInfo, .bookmarkInfo, .historyInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.wrongQuestion, .bookmarkQuestion {
+  display: block;
+  font-size: var(--font-size-base);
+  color: var(--text-title);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wrongType, .bookmarkType, .historyMode {
+  display: block;
+  font-size: var(--font-size-xs);
+  color: var(--text-caption);
+  margin-top: var(--space-xs);
+}
+
+.bookmarkIcon {
+  font-size: 1.25rem;
+  margin-right: var(--space-md);
+}
+
+.removeWrongBtn {
+  padding: 4px 10px;
+  background: transparent;
+  color: var(--error);
+  border: 1px solid var(--error);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.removeWrongBtn:hover {
+  background: var(--error);
+  color: var(--text-on-primary);
+}
+
+.historyDate {
+  display: block;
+  font-size: var(--font-size-base);
+  color: var(--text-title);
+  font-weight: 500;
+}
+
+.historyScore {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.historyScore .scoreValue {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.historyScore .scoreLabel {
+  font-size: var(--font-size-xs);
+  color: var(--text-caption);
+}
+
+.moreText {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--text-caption);
+  padding: var(--space-md);
+}
+
+.emptyState {
+  text-align: center;
+  padding: var(--space-3xl);
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-lg);
+}
+
+.emptyText {
+  font-size: var(--font-size-base);
+  color: var(--text-caption);
+}
+
+.startButton {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--content-max-width);
+  height: 56px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: var(--text-on-primary);
+  border: none;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-primary);
+}
+
+.startButton:hover {
+  opacity: 0.95;
+}
+
+.startButton:active {
+  transform: translateX(-50%) scale(0.98);
+}
