@@ -27,8 +27,19 @@ const Quiz: React.FC = () => {
 
   const goNext = useCallback(() => {
     nextQuestion();
+    window.scrollTo(0, 0);
     if (isLastQuestion) navigate('/result');
   }, [isLastQuestion, nextQuestion, navigate]);
+
+  const handlePrevious = useCallback(() => {
+    previousQuestion();
+    window.scrollTo(0, 0);
+  }, [previousQuestion]);
+
+  const handleJumpToQuestion = useCallback((index: number) => {
+    jumpToQuestion(index);
+    window.scrollTo(0, 0);
+  }, [jumpToQuestion]);
 
   useEffect(() => {
     if (!currentQuestion) return;
@@ -258,7 +269,7 @@ const Quiz: React.FC = () => {
       <div className={styles.actions}>
         <button
           className={`${styles.button} ${styles.secondaryButton}`}
-          onClick={previousQuestion}
+          onClick={handlePrevious}
           disabled={currentQuestionIndex === 0}
         >
           上一题
@@ -301,7 +312,7 @@ const Quiz: React.FC = () => {
           questions={sessionQuestions}
           answers={currentSession.answers}
           currentIndex={currentQuestionIndex}
-          onSelect={jumpToQuestion}
+          onSelect={handleJumpToQuestion}
           onClose={() => setShowAnswerCard(false)}
         />
       )}
