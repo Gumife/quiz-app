@@ -9,8 +9,10 @@ const isValidQuestion = (q: Record<string, unknown>): boolean => {
 };
 
 const mapQuestion = (q: Record<string, unknown>, i: number): Question => {
-  const qType = inferQuestionType(q.options, q.answer || q.correctAnswer || '', q.questionType);
-  let ans: string | string[] = q.answer || q.correctAnswer || '';
+  const options = q.options as Question['options'];
+  const rawAnswer = (q.answer || q.correctAnswer || '') as string | string[];
+  const qType = inferQuestionType(options, rawAnswer, q.questionType as string | undefined);
+  let ans: string | string[] = rawAnswer;
   if (qType === 'multiple' && typeof ans === 'string' && /^[A-Fa-f]{2,}$/.test(ans)) {
     ans = ans.split('');
   }
