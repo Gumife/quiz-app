@@ -96,6 +96,19 @@ const useDebouncedSave = <T,>(key: string, value: T, delay = 300) => {
   }, [key, value, delay]);
 };
 
+const updateWrongQuestions = (
+  isCorrect: boolean,
+  question: Question,
+  currentWrong: Question[],
+  setWrongQuestions: React.Dispatch<React.SetStateAction<Question[]>>
+) => {
+  if (!isCorrect && !currentWrong.find(q => q.id === question.id)) {
+    setWrongQuestions(prev => [...prev, question]);
+  } else if (isCorrect && currentWrong.find(q => q.id === question.id)) {
+    setWrongQuestions(prev => prev.filter(q => q.id !== question.id));
+  }
+};
+
 const playSound = (type: 'correct' | 'wrong' | 'click') => {
   const ctx = getAudioContext();
   if (!ctx) return;
@@ -258,12 +271,7 @@ export const QuizProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       const userAnswer: UserAnswer = { questionId: currentQuestion.id, selectedKey: answer, isCorrect: correct };
       setCurrentSession(prev => prev ? { ...prev, score: correct ? prev.score + 1 : prev.score, answers: [...prev.answers, userAnswer] } : prev);
 
-      const currentWrong = wrongQuestionsRef.current;
-      if (!correct && !currentWrong.find(q => q.id === currentQuestion.id)) {
-        setWrongQuestions(prev => [...prev, currentQuestion]);
-      } else if (correct && currentWrong.find(q => q.id === currentQuestion.id)) {
-        setWrongQuestions(prev => prev.filter(q => q.id !== currentQuestion.id));
-      }
+      updateWrongQuestions(correct, currentQuestion, wrongQuestionsRef.current, setWrongQuestions);
     } else if (currentQuestion.questionType === 'essay') {
       setHasAnswered(true);
       setIsCorrect(null);
@@ -286,12 +294,7 @@ export const QuizProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const userAnswer: UserAnswer = { questionId: currentQuestion.id, selectedKey: selectedAnswer, isCorrect: correct };
     setCurrentSession(prev => prev ? { ...prev, score: correct ? prev.score + 1 : prev.score, answers: [...prev.answers, userAnswer] } : prev);
 
-    const currentWrong = wrongQuestionsRef.current;
-    if (!correct && !currentWrong.find(q => q.id === currentQuestion.id)) {
-      setWrongQuestions(prev => [...prev, currentQuestion]);
-    } else if (correct && currentWrong.find(q => q.id === currentQuestion.id)) {
-      setWrongQuestions(prev => prev.filter(q => q.id !== currentQuestion.id));
-    }
+    updateWrongQuestions(correct, currentQuestion, wrongQuestionsRef.current, setWrongQuestions);
   }, [currentSession, hasAnswered, selectedAnswer, currentQuestion, soundEnabled, checkAnswer]);
 
   const endQuiz = useCallback(() => {
