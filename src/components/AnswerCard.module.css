@@ -87,6 +87,17 @@
   scroll-behavior: smooth;
 }
 
+@media (max-width: 480px) {
+  .panel {
+    width: 95%;
+    padding: var(--space-md);
+  }
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    gap: 4px;
+  }
+}
+
 .cell {
   aspect-ratio: 1;
   display: flex;

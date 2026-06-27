@@ -214,3 +214,18 @@
   color: var(--primary);
   box-shadow: var(--shadow-card);
 }
+
+@media (max-width: 480px) {
+  .resultCard {
+    padding: 24px var(--space-md);
+  }
+  .scoreValue {
+    font-size: 48px;
+  }
+  .actions {
+    padding-bottom: 32px;
+  }
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}

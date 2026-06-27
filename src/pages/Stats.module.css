@@ -370,3 +370,25 @@
 .startButton:active {
   transform: translateX(-50%) scale(0.98);
 }
+
+@media (max-width: 480px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  .statCard {
+    padding: var(--space-lg);
+  }
+  .statValue {
+    font-size: var(--font-size-2xl);
+  }
+  .barChart {
+    height: 120px;
+  }
+  .barWrapper {
+    width: 24px;
+    height: 90px;
+  }
+  .historyActions {
+    flex-wrap: wrap;
+  }
+}

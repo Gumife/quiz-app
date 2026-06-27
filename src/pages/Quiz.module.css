@@ -477,3 +477,22 @@
 
 .feedbackEssay .feedbackIcon { background: var(--primary); }
 .feedbackEssay .feedbackTitle { color: var(--primary); }
+
+@media (max-width: 480px) {
+  .actions {
+    padding-bottom: 80px;
+    gap: var(--space-xs);
+  }
+  .actions .button {
+    padding: 12px;
+    font-size: var(--font-size-md);
+  }
+  .option {
+    padding: 14px 16px;
+  }
+  .optionKey {
+    width: 32px;
+    height: 32px;
+    margin-right: var(--space-md);
+  }
+}
