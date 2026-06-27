@@ -231,12 +231,9 @@ const Upload: React.FC = () => {
   };
 
   const formatTypeBreakdown = (stats: Record<QuestionType, number>) => {
-    const shortLabels: Record<QuestionType, string> = {
-      single: '单选', multiple: '多选', judge: '判断', essay: '简答'
-    };
     return Object.entries(stats)
       .filter(([, count]) => count > 0)
-      .map(([type, count]) => `${shortLabels[type as QuestionType]}${count}`)
+      .map(([type, count]) => `${QUESTION_TYPE_SHORT_LABELS[type as QuestionType]}${count}`)
       .join(' · ');
   };
 
