@@ -7,7 +7,7 @@ const CONFETTI_COUNT = 100;
 const CONFETTI_COLORS = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#54a0ff', '#5f27cd', '#01a3a4'];
 
 const createConfetti = () => {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
   const container = document.createElement('div');
   container.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;overflow:hidden;';
   document.body.appendChild(container);
@@ -33,7 +33,11 @@ const createConfetti = () => {
     container.appendChild(confetti);
   }
 
-  setTimeout(() => container.remove(), 5000);
+  const timer = setTimeout(() => container.remove(), 5000);
+  return () => {
+    clearTimeout(timer);
+    container.remove();
+  };
 };
 
 const Result: React.FC = () => {
@@ -48,7 +52,7 @@ const Result: React.FC = () => {
     if (!currentSession) {
       navigate('/');
     } else if (accuracy === 100 && currentSession.answers.length > 0) {
-      createConfetti();
+      return createConfetti();
     }
   }, [accuracy, currentSession, navigate]);
 
