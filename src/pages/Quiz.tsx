@@ -221,6 +221,7 @@ const Quiz: React.FC = () => {
               data-testid="quiz-option"
               role={!isStudyMode && !hasAnswered ? 'button' : undefined}
               tabIndex={!isStudyMode && !hasAnswered ? 0 : undefined}
+              aria-label={`选项${option.key}: ${option.text.replace(/<[^>]*>/g, '')}`}
               onClick={!isStudyMode && !hasAnswered ? () => selectAnswer(option.key) : undefined}
               onKeyDown={!isStudyMode && !hasAnswered ? (e) => { if (e.key === 'Enter' || e.key === ' ') selectAnswer(option.key); } : undefined}
             >

@@ -68,7 +68,7 @@ const Home: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.hero}>
         <div className={styles.headerTop}>
-          <button className={styles.darkToggle} onClick={toggleDarkMode}>
+          <button className={styles.darkToggle} onClick={toggleDarkMode} aria-label={darkMode ? '切换到亮色模式' : '切换到暗色模式'}>
             {darkMode ? '☀️' : '🌙'}
           </button>
         </div>
@@ -125,7 +125,7 @@ const Home: React.FC = () => {
       )}
 
       {wrongQuestions.length > 0 && (
-        <div className={styles.wrongCard} onClick={handleStartWrongQuiz} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleStartWrongQuiz(); }}>
+        <div className={styles.wrongCard} onClick={handleStartWrongQuiz} role="button" tabIndex={0} aria-label={`错题集练习，共${wrongQuestions.length}道错题待复习`} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleStartWrongQuiz(); }}>
           <div className={styles.wrongIcon}>📝</div>
           <div className={styles.wrongInfo}>
             <span className={styles.wrongTitle}>错题集练习</span>
@@ -136,7 +136,7 @@ const Home: React.FC = () => {
       )}
 
       {bookmarkedQuestions.length > 0 && (
-        <div className={styles.bookmarkCard} onClick={() => navigate('/stats')} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') navigate('/stats'); }}>
+        <div className={styles.bookmarkCard} onClick={() => navigate('/stats')} role="button" tabIndex={0} aria-label={`我的收藏，共${bookmarkedQuestions.length}道收藏题目`} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') navigate('/stats'); }}>
           <div className={styles.bookmarkIcon}>⭐</div>
           <div className={styles.bookmarkInfo}>
             <span className={styles.bookmarkTitle}>我的收藏</span>
@@ -146,7 +146,7 @@ const Home: React.FC = () => {
         </div>
       )}
 
-      <div className={styles.uploadCard} onClick={() => navigate('/upload')} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') navigate('/upload'); }}>
+      <div className={styles.uploadCard} onClick={() => navigate('/upload')} role="button" tabIndex={0} aria-label="上传题库，支持PDF、Word、图片等多种格式" onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') navigate('/upload'); }}>
         <div className={styles.uploadIcon}>📁</div>
         <div className={styles.uploadInfo}>
           <span className={styles.uploadTitle}>上传题库</span>
@@ -155,7 +155,7 @@ const Home: React.FC = () => {
         <div className={styles.uploadArrow}>›</div>
       </div>
 
-      <div className={styles.uploadCard} onClick={() => navigate('/questions')} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') navigate('/questions'); }}>
+      <div className={styles.uploadCard} onClick={() => navigate('/questions')} role="button" tabIndex={0} aria-label={`查看所有题目，共${totalQuestions}道题目`} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') navigate('/questions'); }}>
         <div className={styles.uploadIcon}>📋</div>
         <div className={styles.uploadInfo}>
           <span className={styles.uploadTitle}>查看所有题目</span>
