@@ -1,6 +1,12 @@
 import React, { createContext, useState, useEffect, useContext, useMemo, useCallback, useRef } from 'react';
 import type { ReactNode } from 'react';
 import type { Question, UserAnswer, QuizSession, QuizStats } from '../types';
+import {
+  updateQuestionHistory,
+  updateBankProgress,
+  loadProgressData,
+  saveProgressData
+} from '../utils/progressTracker';
 import QuestionBankContext from './QuestionBankContext';
 import { usePreferences } from './PreferencesContext';
 
@@ -316,7 +322,18 @@ export const QuizProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     });
     setCurrentSession(completed);
     clearProgress();
-  }, [currentSession]);
+
+    const bankId = bankContext?.activeBankId;
+    if (bankId) {
+      const data = loadProgressData();
+      let updatedHistory = [...data.questionHistory];
+      for (const answer of completed.answers) {
+        updatedHistory = updateQuestionHistory(updatedHistory, answer.questionId, bankId, answer.isCorrect === true);
+      }
+      const updatedBankProgress = updateBankProgress(data.bankProgress, bankId, sessionQuestions, updatedHistory);
+      saveProgressData({ questionHistory: updatedHistory, bankProgress: updatedBankProgress });
+    }
+  }, [currentSession, bankContext?.activeBankId, sessionQuestions]);
 
   const nextQuestion = useCallback(() => {
     if (currentQuestionIndex < sessionQuestions.length - 1) {
