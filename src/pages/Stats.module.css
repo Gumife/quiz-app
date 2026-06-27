@@ -368,7 +368,7 @@
 }
 
 .startButton:active {
-  transform: translateX(-50%) scale(0.98);
+  transform: translateX(-50%) scale(var(--scale-active));
 }
 
 @media (max-width: 480px) {

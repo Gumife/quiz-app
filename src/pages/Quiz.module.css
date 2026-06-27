@@ -124,7 +124,7 @@
 }
 
 .soundBtn:hover {
-  transform: scale(1.1);
+  transform: scale(var(--scale-hover));
   box-shadow: var(--shadow-hover);
 }
 
@@ -153,7 +153,7 @@
   border-color: var(--primary);
   color: var(--primary);
   background: var(--primary-bg);
-  transform: scale(1.05);
+  transform: scale(var(--scale-hover));
 }
 
 .questionCard {
@@ -203,7 +203,7 @@
 }
 
 .bookmarkBtn:hover {
-  transform: scale(1.2);
+  transform: scale(var(--scale-hover));
 }
 
 .bookmarked {
@@ -264,7 +264,7 @@
 }
 
 .option:active {
-  transform: scale(0.98);
+  transform: scale(var(--scale-active));
 }
 
 .option.selected {
@@ -441,7 +441,7 @@
 }
 
 .primaryButton:active {
-  transform: scale(0.98);
+  transform: scale(var(--scale-active));
 }
 
 .secondaryButton {
@@ -456,7 +456,7 @@
 }
 
 .secondaryButton:active {
-  transform: scale(0.98);
+  transform: scale(var(--scale-active));
 }
 
 .disabledButton {

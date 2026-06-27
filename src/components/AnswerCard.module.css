@@ -112,7 +112,7 @@
   font-weight: 600;
   color: var(--text-body);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all var(--transition-fast);
   position: relative;
   overflow: hidden;
 }
@@ -134,7 +134,7 @@
 }
 
 .cell:hover {
-  transform: scale(1.08);
+  transform: scale(var(--scale-hover));
   border-color: var(--primary-light);
 }
 

@@ -67,7 +67,10 @@
   --line-height-relaxed: 1.75;
 
   --transition-fast: 0.15s ease-out;
-  --transition-normal: 0.25s ease-out;
+  --transition-normal: 0.2s ease-out;
+
+  --scale-hover: 1.02;
+  --scale-active: 0.98;
   --transition-slow: 0.4s ease-out;
 
   /* 磨砂玻璃材质 */
@@ -348,10 +351,10 @@ a {
 
 /* 按压反馈 */
 .press {
-  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, background 0.25s ease;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
 }
 .press:active {
-  transform: scale(0.97);
+  transform: scale(var(--scale-active));
 }
 
 /* 背景光晕呼吸动画 */
