@@ -45,6 +45,7 @@ const STORAGE_KEY = 'quiz_stats';
 const WRONG_KEY = 'wrong_questions';
 const PROGRESS_KEY = 'quiz_progress';
 const BOOKMARK_KEY = 'bookmarked_questions';
+const MIGRATION_KEY = 'quiz_progress_migrated';
 
 const loadJson = <T,>(key: string, fallback: T): T => {
   try {
@@ -66,6 +67,21 @@ const getWrongQuestions = (): Question[] => loadJson(WRONG_KEY, []);
 const getBookmarkedQuestions = (): Question[] => loadJson(BOOKMARK_KEY, []);
 const getSavedProgress = (): { session: QuizSession; questions: Question[]; index: number } | null =>
   loadJson(PROGRESS_KEY, null);
+
+const migrateOldSessions = (): void => {
+  if (localStorage.getItem(MIGRATION_KEY)) return;
+
+  const stats = loadJson(STORAGE_KEY, { recentSessions: [] });
+  if (stats.recentSessions?.length > 0) {
+    const longTermHistory = loadJson<QuizSession[]>('quiz_long_term_sessions', []);
+    const newHistory = [...stats.recentSessions, ...longTermHistory]
+      .sort((a, b) => (b.startTime || 0) - (a.startTime || 0))
+      .slice(0, 200);
+    saveJson('quiz_long_term_sessions', newHistory);
+  }
+
+  localStorage.setItem(MIGRATION_KEY, 'true');
+};
 
 const saveJson = (key: string, value: unknown): boolean => {
   try {
@@ -182,6 +198,10 @@ export const QuizProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setHasSavedProgress(true);
     }
   }, [currentSession, sessionQuestions, currentQuestionIndex]);
+
+  useEffect(() => {
+    migrateOldSessions();
+  }, []);
 
   const getFilteredQuestions = useCallback((): Question[] => {
     let filtered = [...activeQuestions];
