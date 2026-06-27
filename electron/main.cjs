@@ -117,6 +117,11 @@ ipcMain.handle('readFile', async (event, filePath) => {
   if (!resolved.startsWith(homeDir)) {
     throw new Error('不允许访问用户目录以外的文件');
   }
+  const ALLOWED_EXTENSIONS = ['.txt', '.md', '.json', '.docx', '.pdf', '.xlsx', '.xls'];
+  const ext = path.extname(resolved).toLowerCase();
+  if (!ALLOWED_EXTENSIONS.includes(ext)) {
+    throw new Error(`不支持的文件类型: ${ext || '(无扩展名)'}`);
+  }
   return new Promise((resolve, reject) => {
     fs.readFile(resolved, (err, data) => {
       if (err) {
