@@ -5,6 +5,7 @@ import { usePreferences } from '../context/PreferencesContext';
 import QuestionImage from '../components/QuestionImage';
 import FormulaText from '../components/FormulaText';
 import AnswerCard from '../components/AnswerCard';
+import { QUESTION_TYPE_LABELS } from '../types';
 import styles from './Quiz.module.css';
 
 const Quiz: React.FC = () => {
@@ -104,13 +105,7 @@ const Quiz: React.FC = () => {
   };
 
   const getQuestionTypeLabel = () => {
-    const types: Record<string, string> = {
-      single: '单选题',
-      multiple: '多选题',
-      judge: '判断题',
-      essay: '简答题'
-    };
-    return types[currentQuestion.questionType] || '单选题';
+    return QUESTION_TYPE_LABELS[currentQuestion.questionType] || '单选题';
   };
 
   const getExplanation = () => {
