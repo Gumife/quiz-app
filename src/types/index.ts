@@ -67,3 +67,31 @@ export interface QuizStats {
   accuracy: number;
   recentSessions: QuizSession[];
 }
+
+export interface QuestionAttempt {
+  date: number;
+  isCorrect: boolean;
+}
+
+export interface QuestionHistory {
+  questionId: number;
+  bankId: string;
+  totalAttempts: number;
+  correctAttempts: number;
+  lastAttemptedAt: number;
+  attempts: QuestionAttempt[];
+}
+
+export interface BankProgress {
+  bankId: string;
+  totalQuestions: number;
+  answeredQuestions: number;
+  masteredQuestions: number;
+  accuracy: number;
+  lastStudiedAt: number;
+}
+
+export interface ProgressData {
+  questionHistory: QuestionHistory[];
+  bankProgress: BankProgress[];
+}
