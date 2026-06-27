@@ -571,6 +571,11 @@
 .typeTag.essay { background: #fff3e0; color: #e65100; }
 .typeTag.judge { background: #f3e5f5; color: #7b1fa2; }
 
+:global(.dark) .typeTag.single { background: #1b4332; color: #95d5b2; }
+:global(.dark) .typeTag.multiple { background: #1a3a5c; color: #90caf9; }
+:global(.dark) .typeTag.essay { background: #5c3a1a; color: #ffcc80; }
+:global(.dark) .typeTag.judge { background: #4a1a5c; color: #ce93d8; }
+
 .previewAnswer {
   font-size: var(--font-size-xs);
   color: var(--primary);

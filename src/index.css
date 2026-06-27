@@ -237,6 +237,12 @@ a {
   --glass-drop: rgba(0, 0, 0, 0.55);
   --glow-color: rgba(129, 140, 248, 0.38);
   --glow-color-2: rgba(99, 102, 241, 0.30);
+  --skeleton-base: #27272a;
+  --skeleton-shine: #3f3f46;
+  --success-bg: rgba(0, 180, 42, 0.12);
+  --error-bg: rgba(255, 77, 79, 0.12);
+  --warning-bg: rgba(255, 122, 69, 0.12);
+  --primary-bg: rgba(22, 93, 255, 0.12);
 }
 
 .dark .hero {
